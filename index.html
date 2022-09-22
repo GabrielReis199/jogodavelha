@@ -6,33 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/jogo-da-velha.png" type="image/x-icon">
     <link rel="stylesheet" href="./Styles/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Varela+Round&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="./JS/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="./JS/velha.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Jogo da Velha</title>
 </head>
 <body>
-    <header>
-        <div>
-            <img src="./images/jogo-da-velha.png" alt="Jogo da Velha">
-            <p>Jogo da velha</p>
+    <div id="container">
+        <div id="formularioCaixa">
+            <span class="material-icons">highlight_off</span>
+            <form id="formulario" autocomplete="off">
+                <p class="blocoInput">
+                    <label class="formLabel" for="jogador1">Nome do primeiro jogador:</label>
+                    <input class="inputText" type="text" name="jogador1" id="jogador1" required>
+                </p>
+                <p class="blocoInput">
+                    <label class="formLabel" for="jogador2">Nome do segundo jogador:</label>
+                    <input class="inputText" type="text" name="jogador2" id="jogador2" required>
+                </p>
+                <p class="blocoInput">
+                    <label class="formLabel" for="nivel">Melhor de:</label>
+                    <div id="divRange">
+                        <input class="inputRange" type="range" name="nivel" id="nivel" min="1" max="9" value="3" step="2" oninput="rangeVal.innerHTML = Number(nivel.value)">
+                        <output id="rangeVal">3</output>
+                    </div>
+                </p>
+                <p class="blocoInput">
+                    <input class="botao" type="submit" for="formulario" value="Começar Jogo">
+                </p>
+            </form>
         </div>
-    </header>
-    <main>
-        <div class="placar">
-            <p>Placar: 0 x 0</p>
-        </div>
-        <div class="container-bloco">
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-            <div class="bloco"></div>
-        </div>
-    </main>
+        <header>
+            <img src="./images/jogo-da-velha-novo.png" alt="Jogo da Velha">
+            <div id="titulo">
+                <p>Jogo da velha</p>
+                <div class="lastWin">
+                    <p>Último vencedor: </p>
+                    <p class="ultimoVencedor"></p>
+                </div>
+            </div>
+            <span class="material-icons">menu</span>
+        </header>
+        <main>
+            <div id="botoes">
+                <span class="botao material-icons desfazer">restore</span>
+                <span class="botao material-icons zerar-placar">autorenew</span>
+                <span class="botao material-icons config">settings</span>
+            </div>
+            <div id="placar">
+                <p>Placar:</p>
+                <div>
+                    <p class="user1">0</p>
+                    <p>x</p>
+                    <p class="user2">0</p>
+                </div>
+            </div>
+            <div id="pessoa">
+                <p>Vez de:</p>
+                <p class="userGame"></p>
+            </div>
+            <div class="container-bloco">
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+                <div class="bloco"></div>
+            </div>
+        </main>
+    </div>
+    
 </body>
 </html>
