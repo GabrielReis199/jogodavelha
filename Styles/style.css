@@ -60,7 +60,7 @@ html, body {
 }
 
 form {
-    width: 50vw;
+    width: 60%;
     height: 50vh;
 }
 
@@ -156,6 +156,7 @@ header div p {
     text-align: start;
     user-select: none;
     font-family: var(--fonte-destaque);
+    color: var(--c3);
     margin-left: 2rem;
     font-size: 2rem;
 }
@@ -211,6 +212,7 @@ main {
 }
 
 #placar {
+    color: var(--c3);
     font-size: 2rem;
     width: 100%;
     display: flex;
@@ -232,6 +234,7 @@ main {
 }
 
 #pessoa {
+    color: var(--c3);
     width: 100%;
     display: flex;
     align-items: center;
@@ -278,8 +281,6 @@ main {
 
 .bolinha {
     background-image: url("../images/bolinhaa.png");
-    fill: #FA7358;
-    fill: var(--c4);
     background-size: 8rem 8rem;
     background-repeat: no-repeat;
     background-position: center;
@@ -316,6 +317,10 @@ main {
 }
 
 @media (min-width: 1100px) {
+    #formularioCaixa {
+        width: 900px;
+    }
+
     #container{
         width: 1000px;
     }
