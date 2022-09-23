@@ -5,7 +5,6 @@ $(document).ready(function() {
     var booleano = true
     var atual = []
     var contVitoria = 0
-    var corDoVencedor = ""
 
     altera = function(booleano) { // retorna a classe que o bloco vai pegar
         if(booleano)
@@ -105,17 +104,23 @@ $(document).ready(function() {
             $(".userGame").html(altera(!booleano)=="xis" ? localStorage.jogador1 : localStorage.jogador2)
             booleano = !booleano
             $("#botoes").slideUp(200)
-            
+            $(".desfazer").show()
+            $(".zerar-placar").show()
         }
         verificaVitoria()
     })
 
+    $(".desfazer").hide()
     $(".desfazer").click(function() { // volta 1 passo a cada 1 clique
-        $(atual.pop()).removeClass(altera(!booleano)).removeClass(altera(booleano))
-        $(".userGame").html(altera(!booleano)=="xis" ? localStorage.jogador1 : localStorage.jogador2)
-        booleano = !booleano
+        if(atual.length!=0) {
+            $(atual.pop()).removeClass(altera(!booleano)).removeClass(altera(booleano))
+            $(".userGame").html(altera(!booleano)=="xis" ? localStorage.jogador1 : localStorage.jogador2)
+            booleano = !booleano
+        }
+        
     })
 
+    $(".zerar-placar").hide()
     $(".zerar-placar").click(function() { // volta 1 passo a cada 1 clique
         $(".userGame").html(localStorage.jogador1)
         booleano = true
@@ -126,11 +131,13 @@ $(document).ready(function() {
 
     $(".config").click(function() { // abre configuracao da partida
         $("#formularioCaixa span").css("display", "block")
+        $("header span").css("pointer-events", "none")
         $("#formularioCaixa").slideToggle(200)
         $("#botoes").slideToggle(200)
     })
 
     $("#botoes").css("display", "none")
+    $("header span").css("pointer-events", "none")
     $("header span").click(function() { // faz o menu abrir com as opcoes
         $("#botoes").slideToggle(200)
     })
@@ -138,11 +145,14 @@ $(document).ready(function() {
     $("#formularioCaixa span").css("display", "none")
     $("#formularioCaixa span").click(function() { // faz esconder as configuracoes da partida
         $("#formularioCaixa").slideToggle(200)
+        $("header span").css("pointer-events", "auto")
     })
 
     $("body").on("click", "input[type='submit']", function(e) { // pega as informacoes do form
         if($("input[name=jogador1]").val() && $("input[name=jogador2]").val()) {
             e.preventDefault()
+
+            $("header span").css("pointer-events", "auto")
 
             localStorage.jogador1 = $("input[name=jogador1]").val()
             localStorage.jogador2 = $("input[name=jogador2]").val()
